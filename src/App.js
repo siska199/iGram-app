@@ -1,7 +1,8 @@
-import Navbar from "./components/Navbar/Navbar";
+import DisplayPhotos from "./components/DisplayPhotos/DisplayPhotos";
 function App() {
   return (
     <div>
+      <DisplayPhotos/>
     </div>
   );
 }
