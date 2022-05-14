@@ -1,9 +1,11 @@
 import { UploadFoto } from "./components/UploadFoto/UploadFoto";
+import Navbar from "./components/Navbar/Navbar";
 function App() {
   return (
-    <div>
+    <main main className="app">
+      <Navbar />
       <UploadFoto/>
-    </div>
+    </main>
   );
 }
 
