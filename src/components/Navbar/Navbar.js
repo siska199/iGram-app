@@ -4,7 +4,7 @@ import {NavbarContainer,Logo, Ul, Li} from "./style"
 export const Navbar = () => {
   return (
     <NavbarContainer>
-      <Logo>Logo</Logo>
+      <Logo>iGram</Logo>
       <Ul>
         <Li>Profile</Li>
         <Li>Logout</Li>
