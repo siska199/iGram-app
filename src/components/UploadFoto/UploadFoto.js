@@ -5,8 +5,9 @@ export const UploadFoto = () => {
   const buttRef = useRef(null);
   const [file, setFile] =useState("")
   const handleUploadImage = async (e) => {
-    console.log("file: ", e.target.files[0]);
     setFile(e.target.files[0])
+
+    
   };
 
   return (
