@@ -3,7 +3,6 @@ import { UploadContainer, ButtonUploadContainer, ButtonUpload } from "./style";
 
 export const UploadFoto = () => {
   const buttRef = useRef(null);
-
   const handleUploadImage = async (e) => {
     setFile(e.target.files[0])
   };
