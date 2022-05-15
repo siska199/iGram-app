@@ -18,6 +18,7 @@ const useStorage = (file) => {
         console.log("snapsot: ", snapshot);
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("progress: ", progress)
         setProgress(progress);
       },
       (err) => {
