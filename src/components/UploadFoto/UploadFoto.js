@@ -1,13 +1,11 @@
-import { useState, useEffect, useRef } from "react";
+import {useRef } from "react";
 import { UploadContainer, ButtonUploadContainer, ButtonUpload } from "./style";
 
 export const UploadFoto = () => {
   const buttRef = useRef(null);
-  const [file, setFile] =useState("")
+
   const handleUploadImage = async (e) => {
     setFile(e.target.files[0])
-
-    
   };
 
   return (

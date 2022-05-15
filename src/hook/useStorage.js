@@ -2,7 +2,7 @@ import {storage} from "../firebase.config"
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 import { useState, useEffect } from "react"
 
-const useStorage = (file)=>{
+const UseStorage = (file)=>{
     const [url,setURL] = useState("")
     const [progress, setProgress] = useState(0)
     const [error, setError] = useState("")
@@ -28,4 +28,4 @@ const useStorage = (file)=>{
 
 }
 
-export default useStorage
+export default UseStorage
