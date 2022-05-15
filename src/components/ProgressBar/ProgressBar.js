@@ -1,24 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useStorage from "../../hook/useStorage";
 
-const ProgressBar = ({file,setFile}) => {
-  const {url,progress,error} = useStorage(file)
-  if(progress==100){
-    setTimeout(() => {
-      setFile(false)
-    }, 1500);
-  }
+const ProgressBar = ({ file, setFile }) => {
+  const { url, progress, error } = useStorage(file);
 
-    console.log("url: ", url)
-    console.log("progress", progress)
-    console.log("err: ", error)
+  useEffect(() => {
+    console.log("ooo");
+    if (progress == 100) {
+      console.log("res: ");
+      setTimeout(() => {
+        setFile(false);
+      }, 1500);
+    }
+  }, [url]);
+
   return (
     <>
-      <progress id="file" value={progress} max="100">  
+      <progress id="file" value={progress} max="100">
         {progress}%
       </progress>
     </>
   );
 };
 
-export default ProgressBar
+export default ProgressBar;

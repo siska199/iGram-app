@@ -17,6 +17,7 @@ export const Logo = styled.h1`
 
 export const Ul = styled.ul`
     display : flex;
+    flex-wrap: wrap;
     gap : 1.1rem;
     font-size: 1.3em;
     font-weight: 600;

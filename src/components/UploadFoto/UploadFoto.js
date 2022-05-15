@@ -7,6 +7,7 @@ export const UploadFoto = () => {
   const [file, setFile] = useState(false);
 
   const handleUploadImage = (e) => {
+    e.preventDefault();
     setFile(e.target.files[0]);
   };
 
@@ -25,7 +26,7 @@ export const UploadFoto = () => {
         <ButtonUpload onClick={() => buttRef.current.click()}>+</ButtonUpload>
         {file && (
           <>
-            <ProgressBar file={file} setFile={setFile}/>
+            <ProgressBar file={file} setFile={setFile} />
             <p>{file?.name}</p>
           </>
         )}
