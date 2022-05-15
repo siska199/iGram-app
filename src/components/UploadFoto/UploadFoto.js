@@ -1,11 +1,14 @@
-import {useRef } from "react";
+import { useRef, useState } from "react";
+import ProgressBar from "../ProgressBar/ProgressBar";
 import { UploadContainer, ButtonUploadContainer, ButtonUpload } from "./style";
 
 export const UploadFoto = () => {
   const buttRef = useRef(null);
+  const [file, setFile] = useState(false);
 
-  const handleUploadImage = async (e) => {
-    setFile(e.target.files[0])
+  
+  const handleUploadImage = (e) => {
+    setFile(e.target.files[0]);
   };
 
   return (
@@ -21,8 +24,12 @@ export const UploadFoto = () => {
           hidden
         />
         <ButtonUpload onClick={() => buttRef.current.click()}>+</ButtonUpload>
-        <p>{file.name}</p>
-        <progress id="file" value="32" max="100"> 32% </progress>
+        {file && (
+          <>
+            <ProgressBar file={file}/>
+            <p>{file?.name}</p>
+          </>
+        )}
       </ButtonUploadContainer>
     </UploadContainer>
   );

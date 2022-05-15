@@ -1,31 +1,37 @@
-import {storage} from "../firebase.config"
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
-import { useState, useEffect } from "react"
+import { storage } from "../firebase.config";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { useState, useEffect } from "react";
 
-const UseStorage = (file)=>{
-    const [url,setURL] = useState("")
-    const [progress, setProgress] = useState(0)
-    const [error, setError] = useState("")
+const useStorage = (file) => {
+  const [url, setURL] = useState("");
+  const [progress, setProgress] = useState(0);
+  const [error, setError] = useState("");
 
-    useEffect(async()=>{
-        console.log("get change")
-        const imageRef = ref(storage,`images/${file.name}`) //storage + path penyimpanan file
-        const uploadTask = uploadBytesResumable(imageRef,file) //imageRef and file
+  useEffect(() => {
 
-        uploadTask.on("state_changed",(snap)=>{
-            setProgress(snap.bytesTransferred)
-            if(snap.bytesTransferred==snap.totalBytes){
-                getDownloadURL(uploadTask.snapshot.ref).then(url=>{
-                    setURL(url)
-                }).catch(err=>{
-                    setError(err)
-                })
-            }
-        })
-    },[file])
+    const imageRef = ref(storage, `images/${file.name}`); //storage + path penyimpanan file
+    const uploadTask = uploadBytesResumable(imageRef, file); //imageRef and file
 
-    return{url,progress,error}
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        console.log("snapsot: ", snapshot);
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setProgress(progress);
+      },
+      (err) => {
+        setError(err);
+      },
+      async () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          setURL(url);
+        });
+      }
+    );
+  }, [file]);
 
-}
+  return { url, progress, error };
+};
 
-export default UseStorage
+export default useStorage;
