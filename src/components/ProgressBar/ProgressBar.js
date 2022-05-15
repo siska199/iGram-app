@@ -6,7 +6,7 @@ const ProgressBar = ({file,setFile}) => {
   if(progress==100){
     setTimeout(() => {
       setFile(false)
-    }, 1000);
+    }, 1500);
   }
 
     console.log("url: ", url)
