@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { UploadContainer, ButtonUploadContainer, ButtonUpload } from "./style";
 
-export const UploadFoto = () => {
+const UploadFoto = () => {
   const buttRef = useRef(null);
   const [file, setFile] = useState(false);
 

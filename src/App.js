@@ -1,12 +1,14 @@
-import { UploadFoto } from "./components/UploadFoto/UploadFoto";
 import Navbar from "./components/Navbar/Navbar";
-import DisplayPhotos from "./components/DisplayPhotos/DisplayPhotos";
+import Home from "./pages/Home/Home";
+import { LandingPage } from "./pages/LandingPage/LandingPage";
+
 function App() {
   return (
     <main className="app">
       <Navbar />
-      <UploadFoto/>
-      <DisplayPhotos/>
+
+      <LandingPage />
+      <Home />
     </main>
   );
 }
