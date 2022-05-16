@@ -1,6 +1,5 @@
-import { storage, db } from "../firebase.config";
+import { storage } from "../firebase.config";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { collection, doc, addDoc, serverTimestamp } from "firebase/firestore";
 import { useState, useEffect } from "react";
 
 const useStorage = (file) => {
@@ -9,8 +8,10 @@ const useStorage = (file) => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    console.log("run");
-    const imageCollRef = collection(db, "images");
+    handleUploadStorage();
+  }, []);
+
+  const handleUploadStorage = async () => {
     const imageRef = ref(storage, `images/${file.name}`); //storage + path penyimpanan file
     const uploadTask = uploadBytesResumable(imageRef, file); //imageRef and file
 
@@ -20,24 +21,17 @@ const useStorage = (file) => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setProgress(progress);
-        console.log("progress: ", progress);
       },
       (err) => {
         setError(err);
       },
       async () => {
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          addDoc(imageCollRef, { url, timestamp: serverTimestamp() }).then(
-            (res) => {
-              console.log("ress addDoc:", res);
-            }
-          );
           setURL(url);
         });
       }
     );
-  }, [file]);
-
+  };
   return { url, progress, error };
 };
 

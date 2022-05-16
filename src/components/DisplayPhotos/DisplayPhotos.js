@@ -10,8 +10,12 @@ const DisplayPhotos = () => {
     const unsub = onSnapshot(collection(db, "images"), (snapshots) => {
       let images = [];
       snapshots.forEach((snapshoot) => {
-        images.push({ ...snapshoot.data(), id: snapshoot.id });
+        images.unshift({ ...snapshoot.data(), id: snapshoot.id });
       });
+      images.sort((a, b) => {
+        return b.createdAt - a.createdAt;
+      });
+
       setFiles(images);
     });
 

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { UploadContainer, ButtonUploadContainer, ButtonUpload } from "./style";
 
