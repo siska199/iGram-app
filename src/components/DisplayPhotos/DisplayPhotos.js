@@ -3,7 +3,7 @@ import { doc, onSnapshot, collection } from "firebase/firestore";
 import { db } from "../../firebase.config";
 import { ContainerPhotos } from "./style";
 
-const DisplayPhotos = () => {
+const DisplayPhotos = ({ light }) => {
   const [files, setFiles] = useState(false);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const DisplayPhotos = () => {
   }, []);
 
   return (
-    <ContainerPhotos>
+    <ContainerPhotos light={light} className="container">
       {files &&
         files?.map((file) => (
           <div key={file.id}>

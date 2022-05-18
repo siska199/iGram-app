@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { UploadContainer, ButtonUploadContainer, ButtonUpload } from "./style";
 
@@ -24,10 +24,11 @@ export const UploadFoto = () => {
           hidden
         />
         <ButtonUpload onClick={() => buttRef.current.click()}>+</ButtonUpload>
+
         {file && (
           <>
             <ProgressBar file={file} setFile={setFile} />
-            <p>{file?.name}</p>
+            <label>{file?.name}</label>
           </>
         )}
       </ButtonUploadContainer>
