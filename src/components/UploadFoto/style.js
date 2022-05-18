@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const UploadContainer = styled.div`
-margin-top: 20px;
+  margin-top: 20px;
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 1.3rem;
-  align-items: center;
+  text-align: center;
   h1 {
     font-size: 3em;
     font-family: "Lobster", cursive;
