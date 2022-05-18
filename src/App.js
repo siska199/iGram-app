@@ -8,7 +8,7 @@ function App() {
   return (
     <main className={`${light && "light-mode"} app`}>
       <Navbar setLight={setLight} light={light} />
-      <UploadFoto />
+      <UploadFoto light={light} />
       <DisplayPhotos light={light} />
     </main>
   );

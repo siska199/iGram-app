@@ -10,6 +10,7 @@ export const ContainerPhotos = styled.div`
 
   img {
     object-fit: cover;
+    cursor: pointer !important;
     box-shadow: -10px -10px 0 -5px
         ${(props) => (props.light ? "#272343" : "#ffd803")},
       10px 10px 0 -5px ${(props) => (props.light ? "#272343" : "#ffd803")};

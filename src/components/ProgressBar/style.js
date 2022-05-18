@@ -10,7 +10,7 @@ export const Progress = styled.progress`
   }
 
   &::-webkit-progress-value {
-    background: #bae8e8;
+    background: ${(props)=>props.light?"#272343":"#ffd803"};
     border-radius: 5px;
   }
 

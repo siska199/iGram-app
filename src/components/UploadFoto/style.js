@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const UploadContainer = styled.div`
-  margin-top: 20px;
+  margin-top: 50px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -21,7 +21,6 @@ export const ButtonUploadContainer = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -31,6 +30,7 @@ export const ButtonUploadContainer = styled.div`
     font-weight: 100;
     letter-spacing: 0.1rem;
     margin-top: -17px;
+    color: grey;
   }
   input {
     cursor: pointer;
@@ -42,6 +42,12 @@ export const ButtonUpload = styled.button`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border-color: grey;
   cursor: pointer;
+  background-color: ${(props) => (props.light ? "#272343" : "")};
+  color: ${(props) => (props.light ? "white" : "black")};
+  border: 2px solid white;
+  transition: 0.2s all ease-out;
+  &:hover{
+    transform: scale(1.1);
+  }
 `;

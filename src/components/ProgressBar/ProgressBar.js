@@ -4,7 +4,8 @@ import { collection, doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase.config";
 import { Progress } from "./style";
 
-const ProgressBar = ({ file, setFile }) => {
+const ProgressBar = ({ file, setFile, light }) => {
+  console.log("file: ", file);
   const { url, progress, error } = useStorage(file);
   const imageCollRef = doc(collection(db, "images"));
 
@@ -28,7 +29,7 @@ const ProgressBar = ({ file, setFile }) => {
   };
 
   return (
-    <Progress id="file" value={progress} max="100">
+    <Progress light={light} id="file" value={progress} max="100">
       {progress}%
     </Progress>
   );

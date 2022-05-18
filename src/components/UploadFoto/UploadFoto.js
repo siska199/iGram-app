@@ -2,11 +2,12 @@ import { useRef, useState } from "react";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { UploadContainer, ButtonUploadContainer, ButtonUpload } from "./style";
 
-export const UploadFoto = () => {
+export const UploadFoto = ({ light }) => {
   const buttRef = useRef(null);
   const [file, setFile] = useState(false);
 
   const handleUploadImage = (e) => {
+    console.log("hey", e.target.files[0]);
     e.preventDefault();
     setFile(e.target.files[0]);
   };
@@ -23,11 +24,13 @@ export const UploadFoto = () => {
           accept="image/*"
           hidden
         />
-        <ButtonUpload onClick={() => buttRef.current.click()}>+</ButtonUpload>
+        <ButtonUpload light={light} onClick={() => buttRef.current.click()}>
+          +
+        </ButtonUpload>
 
         {file && (
           <>
-            <ProgressBar file={file} setFile={setFile} />
+            <ProgressBar light={light} file={file} setFile={setFile} />
             <label>{file?.name}</label>
           </>
         )}

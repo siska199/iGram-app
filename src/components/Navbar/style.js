@@ -5,8 +5,7 @@ export const HeaderNavbar = styled.header`
   position: sticky;
   top: 0;
   z-index: 9999;
-  box-shadow: ${(props) =>
-    props.light ? "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" : ""};
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   background-color: ${(props) => (props.light ? "#f3fbfb" : "#272343")};
 `;
 export const NavbarContainer = styled.div`
@@ -49,7 +48,7 @@ export const ToggleButton = styled.div`
 export const ContainerIcon = styled.label`
   width: 100%;
   height: 100%;
-  background-color: ${(props) => props.light ? "#272343" : "#ffd803"};
+  background-color: ${(props) => (props.light ? "#272343" : "#ffd803")};
   display: flex;
   margin: auto;
   justify-content: space-between;
@@ -66,6 +65,6 @@ export const ContainerIcon = styled.label`
     left: 3px;
     border-radius: 50%;
     transition: transform 0.2s linear;
-    background-color: ${(props) => props.light ? "#ffd803" : "#272343"};
+    background-color: ${(props) => (props.light ? "#ffd803" : "#272343")};
   }
 `;
