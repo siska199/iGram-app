@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import useStorage from "../../hook/useStorage";
 import { collection, doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase.config";
 import { Progress } from "./style";
+import { ThemeContext } from "../../hook/themeContext";
 
-const ProgressBar = ({ file, setFile, light }) => {
-  console.log("file: ", file);
+const ProgressBar = ({ file, setFile }) => {
+  const { theme } = useContext(ThemeContext);
   const { url, progress, error } = useStorage(file);
   const imageCollRef = doc(collection(db, "images"));
 
@@ -14,7 +15,7 @@ const ProgressBar = ({ file, setFile, light }) => {
       setTimeout(() => {
         setFile(false);
         handleUploadFirestore();
-      }, 1000);
+      }, 1500);
     }
   }, [url]);
 
@@ -29,7 +30,7 @@ const ProgressBar = ({ file, setFile, light }) => {
   };
 
   return (
-    <Progress light={light} id="file" value={progress} max="100">
+    <Progress color={theme.secondary} id="file" value={progress} max="100">
       {progress}%
     </Progress>
   );

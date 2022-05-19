@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { doc, onSnapshot, collection } from "firebase/firestore";
+import { onSnapshot, collection } from "firebase/firestore";
 import { db } from "../../firebase.config";
 import { ContainerPhotos } from "./style";
 
-const DisplayPhotos = ({ light }) => {
+const DisplayPhotos = ({ setUrl, setModal }) => {
   const [files, setFiles] = useState(false);
 
   useEffect(() => {
@@ -18,16 +18,21 @@ const DisplayPhotos = ({ light }) => {
 
       setFiles(images);
     });
-
     return () => unsub;
   }, []);
 
+  const handleOpenModal = (url) => {
+    console.log("url: ", url);
+    setModal(true);
+    setUrl(url);
+  };
+
   return (
-    <ContainerPhotos light={light} className="container">
+    <ContainerPhotos className="container">
       {files &&
         files?.map((file) => (
-          <div key={file.id}>
-            <img width={300} height={200} src={file.url} />
+          <div onClick={() => handleOpenModal(file.url)} key={file.id}>
+            <img  src={file.url} />
           </div>
         ))}
     </ContainerPhotos>

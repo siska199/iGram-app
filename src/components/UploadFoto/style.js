@@ -43,11 +43,11 @@ export const ButtonUpload = styled.button`
   height: 50px;
   border-radius: 50%;
   cursor: pointer;
-  background-color: ${(props) => (props.light ? "#272343" : "")};
-  color: ${(props) => (props.light ? "white" : "black")};
+  background-color: ${(props) => props.bg};
+  color: ${(props) => (props.bg == "#f3fbfb" ? "black" : "white")};
   border: 2px solid white;
   transition: 0.2s all ease-out;
-  &:hover{
+  &:hover {
     transform: scale(1.1);
   }
 `;

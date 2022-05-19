@@ -1,10 +1,13 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import { ThemeContext } from "../../hook/themeContext";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { UploadContainer, ButtonUploadContainer, ButtonUpload } from "./style";
 
-export const UploadFoto = ({ light }) => {
+const UploadFoto = () => {
   const buttRef = useRef(null);
   const [file, setFile] = useState(false);
+
+  const { theme } = useContext(ThemeContext);
 
   const handleUploadImage = (e) => {
     console.log("hey", e.target.files[0]);
@@ -24,13 +27,13 @@ export const UploadFoto = ({ light }) => {
           accept="image/*"
           hidden
         />
-        <ButtonUpload light={light} onClick={() => buttRef.current.click()}>
+        <ButtonUpload bg={theme.text} onClick={() => buttRef.current.click()}>
           +
         </ButtonUpload>
 
         {file && (
           <>
-            <ProgressBar light={light} file={file} setFile={setFile} />
+            <ProgressBar file={file} setFile={setFile} />
             <label>{file?.name}</label>
           </>
         )}
