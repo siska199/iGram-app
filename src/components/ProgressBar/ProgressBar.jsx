@@ -25,7 +25,6 @@ const ProgressBar = ({ file, setFile }) => {
       url,
       createdAt: Date.now(),
     }).then((res) => {
-      console.log("ress addDoc:", res);
     });
   };
 

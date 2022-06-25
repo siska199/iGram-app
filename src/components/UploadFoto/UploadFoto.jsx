@@ -10,7 +10,6 @@ const UploadFoto = () => {
   const { theme } = useContext(ThemeContext);
 
   const handleUploadImage = (e) => {
-    console.log("hey", e.target.files[0]);
     e.preventDefault();
     setFile(e.target.files[0]);
   };

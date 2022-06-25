@@ -22,7 +22,6 @@ const DisplayPhotos = ({ setUrl, setModal }) => {
   }, []);
 
   const handleOpenModal = (url) => {
-    console.log("url: ", url);
     setModal(true);
     setUrl(url);
   };
